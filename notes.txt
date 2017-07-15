@@ -1,0 +1,474 @@
+Swift:
+	no semicolon
+	declare a variable : use var variable_name
+	print() => to print variables into the console 
+	let => used for constants, if u want to create constant variable, use let variable_name
+	var str:String => makes sure it is storing only string variable
+	convert int into string => String(int)
+
+	round(int)=> rounds the integer 
+
+	IF Statements:
+		if condition {
+			some code 
+		} else if {
+
+		}	....
+
+	Switch Statements:
+		switch value to be considered {
+			case value1:
+				code
+			case value2:   case value1 , value2 =>either value 1 or value2 
+				code
+
+			default:
+				code
+		}
+
+		Loops:
+		for-in loops => loops for certain of times
+		for index in 1...5 {
+			print ("\n(index) times 5 is/(index * 5))
+		}
+
+		While loops:
+			while condition {
+				some code
+			}
+
+		Repeat While loop => do while loop => checks the condition at the end
+
+		repeat {
+			 some code
+		} while
+
+
+
+	Funtions: a block of code with a given name that can be executed on demand by calling that name
+
+		func name(){
+			some code
+		}
+
+	Methods and functions are 2 different names for the same things
+	Function to return a value:
+		func name() -> DataType {
+			some code
+			return someValue
+		}
+
+	Function with parameters:
+			func name(argumentLabel parameterName:DataType){ // (arg x:Int) 
+
+			}
+
+		when you call functin with parameter => function_name(arg:2)
+		for multiple arguments => seperate the arguments by comma
+
+		argumentLabelname can be replaced with underscore _
+
+
+	Classes:
+		class name {
+			properties/definition
+		}
+
+		class BlogPost {
+
+			var title = ""
+			var body = ""
+			var author = ""
+		}
+			object => let myPost = BlogPost()
+			then myPost.properties
+
+	Inheritance:
+		class name : inheritance class name
+
+		class futureClass : Car {
+
+		}
+
+	Overridding: allows you to take a function/property from a parent class and overrides it.
+
+		override a function
+			override func name() {   // functin name same as parent class name
+				code
+			}
+
+	UIKit: apple framework for user interface
+		NSObject => provides the basic functionality
+
+	Initialization: for constructor
+			functions for classes  
+			used in Classes
+			init () {
+
+			}
+
+			or init function 
+			intit(n:String, a:Int){
+				name =n
+				age =a
+			}   // also can use self.name .... or self.age
+
+	Optionals: ? => makes the varuable's value optional, when there is question mark with 
+					a variable, to get its value we need to unwrap it using !
+		if doesnot want to intialize any variable in the beginning
+		var title:String? => could be nill or string
+
+
+		optional binding => to check if the title variable is empty or not
+		if let actualTitle = post.title {
+			print (actualTitle + "salut")
+		}
+
+
+		or force unwrapping => when you know there is a value inside the variable
+			print (post.title! + "salut")			
+
+		or using if statement and checking for nil
+
+	Properties: variables that are associted with a class
+			 	values are independent between objects
+		computed properties:
+				example:
+						var fullTitle:String {
+
+							if title != nil && author != nil {
+									return title! + "by "+author!.name
+							} else if title != nil {
+									return title!
+							} else {
+							 	return "no title"
+							}
+						}
+
+
+	Designated and convience intializers
+			covenience init(customTitle:String){   => called the init() inside
+				self.init()
+			}
+
+	Arrays: collection of data ordered by indexes, 3 types
+
+		var d =["","",""]
+		var e = [String]() => empty but will store string array
+
+		add in the array => d += ["",""] => if only d = ["",""], lose the previous values 		and get the new values
+				or d.append()
+
+		remove from the array => d.remove(), removeAll()
+					d.remove(at:Int)
+
+		how many elements in the array  => d.count
+
+	Dictionaries: has keys and values 
+			var carDB = Dictionary<String, String>()  => then we need to create an object
+
+			var carDB1 = [String:String]()  => empty dictionary
+
+			create a dictionary
+					key 		value
+			carDB["JSD 238"] = "Blue Ferrari" => associated with JSD 238
+
+			reterive the value (it is an optional, may need to unwrap it) => carDB["key"]
+
+			// Remove a key-value pair
+			carDB["JSD 238"] = nil
+
+
+
+			//iterate over it => tuple(set of variables)
+				for(license,car) in carDB {
+							print(car)
+				}
+
+
+
+Challenges:
+
+1)
+import UIKit
+
+//
+// CodeWithChris Learn Swift for Beginners
+// http://codewithchris.com/learn-swift
+//
+// Challenge #1: The Lost Animal Challenge
+//
+// Instructions: 
+// Given the two arrays below, write a function that takes a String as an input parameter and returns a Boolean value. The function should return true if the String input is in either array and it should return false if the String input is in neither array.
+//
+// Examples:
+// Call your function and pass in the String "cat" as the input. Your function should return true
+// Call your function and pass in the String "cow" as the input. Your function should return false
+ 
+let array1 = ["dog", "cat", "bird", "pig"]
+let array2 = ["turtle", "snake", "lizard", "shark"]
+
+// Write your function below:
+
+func test(x:String) -> Bool{
+        var array3 = array1 + array2
+    for index in array3 {
+        if index.lowercased() == x.lowercased(){
+            return true
+        }
+    }
+    return false
+}
+
+test(x:"cat")
+test(x:"cow")
+
+
+2)
+
+
+import UIKit
+
+//
+// CodeWithChris Learn Swift for Beginners
+// http://codewithchris.com/learn-swift
+//
+// Challenge #2: The Caterpillar Challenge
+//
+// Instructions:
+// Complete the class definition so that you get the expected output in the console (specified at the bottom of this playground).
+//
+// Each time the "add" function is called, keep track of the String input that is passed in.
+//
+// When the "go" function is called, use the print command to output all of the String data (added through calling the "add" function) on a single line.
+//
+// Example:
+// See under the class definition for an example of expected output for the given commands.
+
+// --- Your code goes below this line ---
+class StringCaterpillar {
+    
+    var body = [String]()
+    
+    func add(_ text:String) {
+        // Note:
+        // You must use the body array declared above to store the pieces.
+        // It may be unnecessary to use an array for this but my intention is for you to practice using arrays.
+        
+        body.append(text)
+    }
+    
+    func go() {
+        var prints = ""
+        
+        for s in body {
+            prints += s
+        }
+        print(prints)
+    }
+    
+    // print(body.joined())
+}
+// --- Your code goes above this line ---
+
+// --- Don't edit or add anything below this line ---
+let myCaterpillar = StringCaterpillar()
+
+myCaterpillar.add("h")
+myCaterpillar.add("e")
+myCaterpillar.add("l")
+myCaterpillar.add("l")
+myCaterpillar.add("o")
+
+myCaterpillar.go()
+
+// Expected Output:
+// Expected output in the console after the above statements: "hello"
+
+// For Bonus Credit: 
+// Create a custom initializer so that you can declare a caterpillar object like this
+//
+// let myCaterpillar = StringCaterpillar("hi")
+// 
+// The input for this init should be stored.
+//
+// After changing the "myCaterpillar" constant above to use your new custom initializer, the new expected output should be: "hihello"
+
+
+
+3)
+
+import UIKit
+
+//
+// CodeWithChris Learn Swift for Beginners
+// http://codewithchris.com/learn-swift
+//
+// Challenge #3: The Library Challenge
+//
+// Instructions:
+// Complete the class definition so that you get the expected output in the console (specified below the class definitions). See TODOs.
+//
+
+class Person {
+    
+    var name:String!
+    
+    init(_ fullName:String) {
+        name = fullName
+    }
+}
+
+class Book {
+    
+    var title:String!
+    var author:String!
+    
+    init(_ bookTitle:String, _ bookAuthor:String) {
+        title = bookTitle
+        author = bookAuthor
+    }
+    
+}
+
+// --- Your code goes below this line ---
+
+class Library {
+    
+    var catalogue = ["ORW":Book("1985", "George Orwell"),
+                     "RAY":Book("Fahrenheit 451", "Ray Bradbury")]
+    
+    var checkedOutBooks = [String:Person]()
+    
+    func searchByTitle(_ title:String) -> String {
+        
+        // TODO: This function searches the catalogue dictionary for a title
+        //
+        // Returns "Available" if the book exists and isn't checked out
+        //
+        // Returns "Checked out by name" if the book exists and is checked out
+        //
+        // Returns "Not in catalogue" if the book doesn't exist
+        
+        for (bookId,book) in catalogue{
+            if book.title == title {
+                if checkedOutBooks[bookId] == nil {
+                    // book is not check out
+                    return "Available"
+                } else {
+                    let person = checkedOutBooks[bookId]
+                    return "Checked out By " + (person!.name)        }
+            }
+        }
+        
+        
+        return "Not in Catalogue"
+    }
+    
+    func checkOut(_ bookId:String, _ person:Person) -> String {
+        
+        // TODO: This function adds to the checkedOutBooks dictionary
+        //
+        // Returns "Error: Book already checked out" if the book is already in the checkedOutBooks dictionary
+        //
+        // Returns "Successfully checked out" and adds the bookId,person key-value pair if the book doesn't currently exist in the checkedOutbooks dictionary
+        //
+        // Returns "Book doesn't exist" if the book isn't in the catalogue dictionary
+        if catalogue[bookId] == nil {
+            return "Book does not exists "
+        }
+        
+        if catalogue[bookId] != nil {
+            return "Error: Book already checked out"
+        } else {
+            checkedOutBooks[bookId] = person
+            return "Checked out Successfully"
+        }
+    }
+    
+    func checkIn(_ bookId:String) -> String {
+        
+        // TODO: This function removes the bookId,person key-value pair from the checkedOutBooks dictionary
+        //
+        // Returns "Book doesn't exist" if the book isn't in the catalogue dictionary
+        //
+        // Returns "Error: Can't check in a book that hasn't been checked out" if the book wasn't checked out in the first place
+        //
+        // Returns "Successfully checked in"
+        
+        if catalogue[bookId] == nil {
+            return "Book does not exists"
+
+        }
+        if checkedOutBooks[bookId] == nil {
+            return "Error: Can't Check"
+        } else {
+            checkedOutBooks[bookId] = nil
+            return "Successfully Check In"
+        }
+    }
+    
+}
+// --- Your code goes above this line ---
+
+// --- Don't edit or add anything below this line ---
+
+let lib = Library()
+let borrower1 = Person("Curious George")
+let borrower2 = Person("Mark Twain")
+
+// George searches for a book
+let searchResult = lib.searchByTitle("1985")
+print(searchResult)
+
+// Expected Output in console:
+// "Available"
+
+// George checks out the book
+let borrowResult = lib.checkOut("ORW", borrower1)
+print(borrowResult)
+
+// Expected Output in console:
+// "Successfully checked out"
+
+// Mark searches for a book
+let searchResult2 = lib.searchByTitle("1985")
+print(searchResult2)
+
+// Expected Output in console:
+// "Checked out by Curious George"
+
+// Mark tries to borrow a book that's already checked out
+let borrowResult2 = lib.checkOut("ORW", borrower2)
+print(borrowResult2)
+
+// Expected Output in console:
+// "Error: Book already checked out"
+
+// A book is checked in
+let checkInResult = lib.checkIn("RAY")
+print(checkInResult)
+
+// Expected Output in console:
+// "Error: Can't check in a book that hasn't been checked out"
+
+// George checks in his book
+let checkInResult2 = lib.checkIn("ORW")
+print(checkInResult2)
+
+// Expected Output in console:
+// "Successfully checked in"
+
+// Mark attempts to borrow the book again
+let borrowResult3 = lib.checkOut("ORW", borrower2)
+print(borrowResult3)
+
+// Expected Output in console:
+// "Successfully checked out"
+
+
+
+
+
+
+
